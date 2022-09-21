@@ -39,16 +39,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <Button
-        android:id="@+id/btn_add_contact"
+    <TextView
+        android:id="@+id/tv_add_contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/no_color"
+        android:layout_marginStart="@dimen/tv_add_contact_start_margin"
         android:text="@string/add_contact"
-        android:textAllCaps="false"
-        android:textSize="@dimen/btn_add_contact_ts"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="@dimen/tv_add_contact_ts"
         app:layout_constraintBottom_toTopOf="@+id/gl_under_v_top"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_btn_back_arrow"
         tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.Guideline

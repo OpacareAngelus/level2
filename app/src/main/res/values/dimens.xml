@@ -9,6 +9,7 @@
     <dimen name="rv_contacts_margin">8dp</dimen>
     <dimen name="margin_back_arrow">20dp</dimen>
     <dimen name="margin_end_trash_can">4dp</dimen>
-    <dimen name="btn_add_contact_ts">11sp</dimen>
+    <dimen name="tv_add_contact_ts">11sp</dimen>
     <dimen name="btn_add_contact_landscape_start_margin">16dp</dimen>
+    <dimen name="tv_add_contact_start_margin">20dp</dimen>
 </resources>
