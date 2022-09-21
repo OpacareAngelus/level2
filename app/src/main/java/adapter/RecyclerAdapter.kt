@@ -11,8 +11,8 @@ class CustomRecyclerAdapter(private val names: List<String>) : RecyclerView
 .Adapter<CustomRecyclerAdapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val largeTextView: TextView = itemView.findViewById(R.id.textViewLarge)
-        val smallTextView: TextView = itemView.findViewById(R.id.textViewSmall)
+        val largeTextView: TextView = itemView.findViewById(R.id.name)
+        val smallTextView: TextView = itemView.findViewById(R.id.career)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
