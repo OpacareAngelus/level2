@@ -17,7 +17,7 @@ class MyContactsLayout : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.my_contacts)
-
+        println(contacts.getSize())
         val recyclerView: RecyclerView = findViewById(R.id.rv_contacts)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = RecyclerAdapter(getCatList())
