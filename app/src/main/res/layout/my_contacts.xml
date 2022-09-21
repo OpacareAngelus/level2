@@ -13,38 +13,43 @@
         android:background="?attr/colorPrimaryVariant"
         app:layout_constraintBottom_toTopOf="@id/gl_under_v_top" />
 
-    <ImageButton
-        android:id="@+id/img_btn_back_arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/back_arrow"
-        android:layout_marginStart="@dimen/margin_back_arrow"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_contacts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/contacts"
         android:background="@color/no_color"
+        android:text="@string/contacts"
         android:textColor="?attr/colorOnPrimary"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <ImageButton
+        android:id="@+id/img_btn_back_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_back_arrow"
+        android:layout_marginTop="@dimen/margin_back_arrow"
+        android:background="@drawable/back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <Button
+        android:id="@+id/btn_add_contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/no_color"
         android:text="@string/add_contact"
         android:textAllCaps="false"
-        android:textSize="11sp"
+        android:textSize="@dimen/btn_add_contact_ts"
         app:layout_constraintBottom_toTopOf="@+id/gl_under_v_top"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_under_v_top"
