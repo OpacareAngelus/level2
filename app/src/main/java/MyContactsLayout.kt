@@ -11,6 +11,7 @@ class MyContactsLayout : AppCompatActivity() {
 
     private lateinit var adapter: RecyclerAdapter
     private lateinit var binding: MyContactsLayout
+    private lateinit var contacts: HardCodeUsersData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
