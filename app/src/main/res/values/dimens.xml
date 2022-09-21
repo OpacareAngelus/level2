@@ -7,4 +7,5 @@
     <dimen name="tv_career_ts">12sp</dimen>
     <dimen name="tv_career_m_bottom">3dp</dimen>
     <dimen name="rv_contacts_margin">8dp</dimen>
+    <dimen name="margin_back_arrow">20dp</dimen>
 </resources>
