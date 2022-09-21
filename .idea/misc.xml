@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/projects/level2/app/src/main/res/drawable/back_arrow.xml" value="0.22" />
+        <entry key="..\:/projects/level2/app/src/main/res/drawable/btn_rect.xml" value="0.141" />
+        <entry key="..\:/projects/level2/app/src/main/res/drawable/btn_rounding.xml" value="0.141" />
         <entry key="..\:/projects/level2/app/src/main/res/drawable/frame_rounding.xml" value="0.196" />
+        <entry key="..\:/projects/level2/app/src/main/res/drawable/img_shaper.xml" value="0.141" />
         <entry key="..\:/projects/level2/app/src/main/res/drawable/lense.xml" value="0.141" />
         <entry key="..\:/projects/level2/app/src/main/res/drawable/trash_can.xml" value="0.141" />
         <entry key="..\:/projects/level2/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
