@@ -3,6 +3,8 @@ package com.example.level2.model
 typealias usersListener = (users: List<User>) -> Unit
 
 class HardCodeUsersData {
+
+
     private var users = mutableListOf<User>()
 
     private val listeners = mutableSetOf<usersListener>()
