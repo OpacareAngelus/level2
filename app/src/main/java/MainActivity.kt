@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.my_contacts)
 
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        val recyclerView: RecyclerView = findViewById(R.id.rv_contacts)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = CustomRecyclerAdapter(getCatList())
     }

@@ -11,8 +11,8 @@ class CustomRecyclerAdapter(private val names: List<String>) : RecyclerView
 .Adapter<CustomRecyclerAdapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val largeTextView: TextView = itemView.findViewById(R.id.name)
-        val smallTextView: TextView = itemView.findViewById(R.id.career)
+        val nameField: TextView = itemView.findViewById(R.id.tv_name)
+        val careerField: TextView = itemView.findViewById(R.id.tv_career)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -22,8 +22,8 @@ class CustomRecyclerAdapter(private val names: List<String>) : RecyclerView
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.largeTextView.text = names[position]
-        holder.smallTextView.text = "кот"
+        holder.nameField.text = names[position]
+        holder.careerField.text = "кот"
     }
 
     override fun getItemCount() = names.size

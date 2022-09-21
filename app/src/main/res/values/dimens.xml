@@ -3,4 +3,8 @@
     <dimen name="step_between_contacts">16dp</dimen>
     <dimen name="name_left_margin">16dp</dimen>
     <dimen name="career_left_margin">16dp</dimen>
+    <dimen name="tv_name_ts">18sp</dimen>
+    <dimen name="tv_career_ts">12sp</dimen>
+    <dimen name="tv_career_m_bottom">3dp</dimen>
+    <dimen name="rv_contacts_margin">8dp</dimen>
 </resources>
