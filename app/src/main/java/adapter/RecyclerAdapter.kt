@@ -6,7 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.level2.MyContactsLayout
 import com.example.level2.R
+import com.example.level2.model.HardCodeUsersData
+import com.example.level2.model.User
 
 class RecyclerAdapter(private val names: List<String>) : RecyclerView
 .Adapter<RecyclerAdapter.MyViewHolder>() {
