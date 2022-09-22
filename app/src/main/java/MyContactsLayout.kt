@@ -5,12 +5,12 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.level2.adapter.RecyclerAdapter
+import com.example.level2.model.UsersViewModel
 
 class MyContactsLayout : AppCompatActivity() {
 
     private lateinit var adapter: RecyclerAdapter
     private lateinit var binding: MyContactsLayout
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -10,4 +10,8 @@ class UsersViewModel : ViewModel() {
     init {
         userList.value = UserData.getUsers()
     }
+
+    fun getUsers(position: Int) = userList.value!![position]
+
+
 }

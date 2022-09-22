@@ -8,9 +8,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.level2.R
 import com.example.level2.model.UserData
+import com.example.level2.model.UsersViewModel
 
 class RecyclerAdapter() : RecyclerView
 .Adapter<RecyclerAdapter.MyViewHolder>() {
+
+    private var userList: UsersViewModel = UsersViewModel()
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameField: TextView = itemView.findViewById(R.id.tv_name)
@@ -25,8 +28,8 @@ class RecyclerAdapter() : RecyclerView
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.nameField.text = UserData.getUsers()[position].name
-        holder.careerField.text = UserData.getUsers()[position].career
+        holder.nameField.text = userList.getUsers(position).name
+        holder.careerField.text = userList.getUsers(position).career
 //        holder.userPhoto.background =
     }
 
