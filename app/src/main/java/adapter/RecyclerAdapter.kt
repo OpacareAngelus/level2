@@ -5,15 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.level2.R
+import com.example.level2.model.User
 import com.example.level2.model.UserData
 import com.example.level2.model.UsersViewModel
 
 class RecyclerAdapter() : RecyclerView
 .Adapter<RecyclerAdapter.MyViewHolder>() {
 
-    private var userList: UsersViewModel = UsersViewModel()
+    private val userList: UsersViewModel = UsersViewModel()
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameField: TextView = itemView.findViewById(R.id.tv_name)
