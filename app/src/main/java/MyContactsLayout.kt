@@ -17,11 +17,11 @@ class MyContactsLayout : AppCompatActivity() {
         setContentView(R.layout.my_contacts)
         val recyclerView: RecyclerView = findViewById(R.id.rv_contacts)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = RecyclerAdapter(getCatList())
+        recyclerView.adapter = RecyclerAdapter()
     }
 
 
-    private fun getCatList(): List<String> {
-        return this.resources.getStringArray(R.array.cat_names).toList()
-    }
+//    private fun getCatList(): List<String> {
+//        return this.resources.getStringArray(R.array.cat_names).toList()
+//    }
 }

@@ -14,7 +14,7 @@ object UserData {
             1,
             "https://st.depositphotos.com/1072614/4661/i/600/depositphotos_46614201-stock-photo-housewife-cat.jpg",
             "Ельвіра",
-            "Housewife",
+            "Домогосподарка",
             "м.Львів"
         ),
         User(
@@ -28,9 +28,12 @@ object UserData {
             3,
             "https://i.pinimg.com/originals/19/a8/9e/19a89e54cec871daee349e547e77056d.jpg",
             "Андрій",
-            "Військовий",
+            "Бойовий кіт",
             "Харків"
         )
     )
 
+    fun getSize(): Int {
+        return getUsers().size
+    }
 }

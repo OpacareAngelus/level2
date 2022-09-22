@@ -6,12 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.level2.MyContactsLayout
 import com.example.level2.R
-import com.example.level2.model.HardCodeUsersData
-import com.example.level2.model.User
+import com.example.level2.model.UserData
 
-class RecyclerAdapter(private val names: List<String>) : RecyclerView
+class RecyclerAdapter() : RecyclerView
 .Adapter<RecyclerAdapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -27,10 +25,10 @@ class RecyclerAdapter(private val names: List<String>) : RecyclerView
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.nameField.text = names[position]
-        holder.careerField.text = "кот"
+        holder.nameField.text = UserData.getUsers()[position].name
+        holder.careerField.text = UserData.getUsers()[position].career
 //        holder.userPhoto.background =
     }
 
-    override fun getItemCount() = names.size
+    override fun getItemCount() = UserData.getSize()
 }
