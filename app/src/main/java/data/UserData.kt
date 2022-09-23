@@ -16,13 +16,13 @@ object UserData {
             "м.Львів"
         ),
         User(
-            "https://funart.pro/uploads/posts/2021-07/1625629841_1-funart-pro-p-kot-uchenii-zhivotnie-krasivo-foto-2.jpg",
+            "https://images.prom.ua/3469991393_w640_h640_almaznaya-mozaika-kot.jpg",
             "Мірінда",
             "Доктор котячих наук",
             "Дніпро"
         ),
         User(
-            "https://i.pinimg.com/originals/19/a8/9e/19a89e54cec871daee349e547e77056d.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWOUS_MuhMpwAp4L-7E9Dh091zsMCGxWmrBw&usqp=CAU",
             "Андрій",
             "Бойовий кіт",
             "Харків"

@@ -5,17 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.level2.R
-import com.example.level2.model.User
+import com.example.level2.extension.addImage
 import com.example.level2.model.UserData
 import com.example.level2.model.UsersViewModel
+
 
 class RecyclerAdapter() : RecyclerView
 .Adapter<RecyclerAdapter.MyViewHolder>() {
 
-    private val userList: UsersViewModel = UsersViewModel()
+     val userList: UsersViewModel = UsersViewModel()
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameField: TextView = itemView.findViewById(R.id.tv_name)
@@ -32,8 +32,10 @@ class RecyclerAdapter() : RecyclerView
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.nameField.text = userList.getUsers(position).name
         holder.careerField.text = userList.getUsers(position).career
-//        holder.userPhoto.background =
+        holder.userPhoto.addImage(userList.getUsers(position))
+
     }
+
 
     override fun getItemCount() = UserData.getSize()
 }
