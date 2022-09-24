@@ -1,17 +1,18 @@
 package com.example.level2.model
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class UsersViewModel : ViewModel() {
 
-    private var userList : MutableLiveData<List<User>> = MutableLiveData()
+    private var userList: ArrayList<User> = arrayListOf()
 
     init {
-        userList.value = UserData.getUsers()
+        userList = UserData.getUsers()
     }
 
-    fun getUsers(position: Int) = userList.value!![position]
+    fun getUser(position: Int) = userList[position]
 
+    fun size() = userList.size
 
+    fun delete(position: Int) = userList.removeAt(position)
 }

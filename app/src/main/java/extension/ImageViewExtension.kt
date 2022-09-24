@@ -9,7 +9,3 @@ fun ImageView.addImage(user: User) {
         .load(user.photo)
         .into(this)
 }
-
-fun ImageView.addImage(image:String){
-    Glide.with(this).load(image).into(this)
-}

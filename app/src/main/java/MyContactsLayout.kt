@@ -9,7 +9,6 @@ import com.example.level2.adapter.RecyclerAdapter
 class MyContactsLayout : AppCompatActivity() {
 
     private lateinit var adapter: RecyclerAdapter
-    private lateinit var binding: MyContactsLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,9 +17,4 @@ class MyContactsLayout : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = RecyclerAdapter()
     }
-
-
-//    private fun getCatList(): List<String> {
-//        return this.resources.getStringArray(R.array.cat_names).toList()
-//    }
 }
