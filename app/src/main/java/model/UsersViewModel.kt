@@ -15,4 +15,6 @@ class UsersViewModel : ViewModel() {
     fun size() = userList.size
 
     fun delete(position: Int) = userList.removeAt(position)
+
+    fun add(id: Int, user: User) = userList.add(id, user)
 }

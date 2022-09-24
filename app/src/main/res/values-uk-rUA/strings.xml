@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="contacts">Контакти</string>
+    <string name="add_contact">Додати контакт</string>
+    <string name="career">Посада</string>
+    <string name="name">Ім\'я Фамілія</string>
+</resources>

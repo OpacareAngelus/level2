@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.level2.R
 import com.example.level2.extension.addImage
 import com.example.level2.model.User
 import com.example.level2.model.UsersViewModel
+import com.google.android.material.snackbar.Snackbar
 
 
 class RecyclerAdapter() : RecyclerView
@@ -45,14 +45,25 @@ class RecyclerAdapter() : RecyclerView
 
     override fun onClick(v: View?) {
         val user = v?.tag as User
-        val context = v?.context
-        when (v?.id) {
+        val delMessage = Snackbar.make(v, "${user.name} has deleted.", Snackbar.LENGTH_LONG)
+        when (v.id) {
             R.id.img_btn_trash_can -> {
                 userList.delete(user.id)
                 notifyItemRemoved(user.id)
                 notifyItemRangeChanged(user.id, userList.size())
-                Toast.makeText(context, "${user.name} has deleted", Toast.LENGTH_SHORT).show()
+                backUser(user, delMessage)
+                delMessage.show()
             }
+
         }
+    }
+
+    /**Method back to list of contacts deleted contact if user push "Cancel" on the Snackbar.*/
+    private fun backUser(user: User, delMessage: Snackbar) {
+        delMessage.setAction("Cancel", View.OnClickListener() {
+            userList.add(user.id, user)
+            notifyItemRangeChanged(user.id, userList.size())
+            println("kek")
+        })
     }
 }
