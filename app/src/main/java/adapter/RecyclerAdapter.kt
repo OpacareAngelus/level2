@@ -45,17 +45,20 @@ class RecyclerAdapter() : RecyclerView
 
     override fun onClick(v: View?) {
         val user = v?.tag as User
-        val delMessage = Snackbar.make(v, "${user.name} has deleted.", Snackbar.LENGTH_LONG)
         when (v.id) {
             R.id.img_btn_trash_can -> {
-                userList.delete(user.id)
-                notifyItemRemoved(user.id)
-                notifyItemRangeChanged(user.id, userList.size())
-                backUser(user, delMessage)
-                delMessage.show()
+                deleteUser(user, v)
             }
-
         }
+    }
+
+    private fun deleteUser(user: User, v: View) {
+        val delMessage = Snackbar.make(v, "${user.name} has deleted.", Snackbar.LENGTH_LONG)
+        userList.delete(user.id)
+        notifyItemRemoved(user.id)
+        notifyItemRangeChanged(user.id, userList.size())
+        backUser(user, delMessage)
+        delMessage.show()
     }
 
     /**Method back to list of contacts deleted contact if user push "Cancel" on the Snackbar.*/
@@ -63,7 +66,6 @@ class RecyclerAdapter() : RecyclerView
         delMessage.setAction("Cancel", View.OnClickListener() {
             userList.add(user.id, user)
             notifyItemRangeChanged(user.id, userList.size())
-            println("kek")
         })
     }
 }
