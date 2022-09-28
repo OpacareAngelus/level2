@@ -1,10 +1,12 @@
-package com.example.level2
+package ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.level2.R
 import com.example.level2.adapter.RecyclerAdapter
 import com.example.level2.databinding.MyContactsBinding
 import com.example.level2.model.UsersViewModel
@@ -18,16 +20,31 @@ class MyContactsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Binding
         setContentView(R.layout.my_contacts)
         binding = MyContactsBinding.inflate(layoutInflater)
-        setContentView(R.layout.my_contacts)
         val view = binding.root
         setContentView(view)
+        //Create RecyclerView
         val recyclerView: RecyclerView = binding.rvContacts
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = RecyclerAdapter(userList)
+        //ItemTouch
         var itemTouchHelper =
             ItemTouchHelper(simpleCallback).attachToRecyclerView(recyclerView)
+        //Listener
+        setListeners()
+    }
+
+    private fun setListeners() {
+        setOnClickListeners()
+    }
+
+    private fun setOnClickListeners() {
+        binding.tvAddContact.setOnClickListener {
+            val intent = Intent(this, AddContactActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private var simpleCallback =
@@ -57,6 +74,7 @@ class MyContactsActivity : AppCompatActivity() {
                             viewHolder.adapterPosition,
                             binding.rvContacts.adapter!!.itemCount
                         )
+
                     }
                 }
             }

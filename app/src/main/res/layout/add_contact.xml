@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ui.AddContactActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/v_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@id/gl_under_v_top" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_under_v_top"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.30" />
+
+        <ImageButton
+            android:id="@+id/img_btn_back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_back_arrow"
+            android:layout_marginTop="@dimen/margin_back_arrow"
+            android:background="@drawable/back_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_add_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/no_color"
+            android:text="@string/add_contact"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="@dimen/large_text_size"
+            app:layout_constraintBottom_toTopOf="@+id/iv_userPhoto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_userPhoto"
+            android:layout_width="@dimen/user_photo_size"
+            android:layout_height="@dimen/user_photo_size"
+            android:backgroundTint="@drawable/btn_rect"
+            android:contentDescription="@string/user_photo"
+            android:foreground="@drawable/img_shaper_color_prime"
+            android:src="@drawable/dummy_user_photo"
+            app:layout_constraintBottom_toBottomOf="@+id/v_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_add_contact" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_mid"
+        android:layout_marginTop="@dimen/margin_mid"
+        android:layout_marginEnd="@dimen/margin_mid"
+        android:layout_marginBottom="@dimen/margin_mid"
+        android:isScrollContainer="false"
+        android:paddingTop="@dimen/padding_contacts">
+
+        <LinearLayout
+            android:id="@+id/ll_contacts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:verticalScrollbarPosition="right">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tie_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/background"
+                    android:hint="@string/tie_username"
+                    android:textColorHint="?attr/colorOnSecondary"
+                    android:textSize="@dimen/large_text_size" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_Career"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiet_Career"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/background"
+                    android:hint="@string/tie_career"
+                    android:textColorHint="?attr/colorOnSecondary"
+                    android:textSize="@dimen/large_text_size" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiet_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/background"
+                    android:hint="@string/tie_email"
+                    android:textColorHint="?attr/colorOnSecondary"
+                    android:textSize="@dimen/large_text_size" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiet_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/background"
+                    android:hint="@string/tie_phone"
+                    android:textColorHint="?attr/colorOnSecondary"
+                    android:textSize="@dimen/large_text_size" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiet_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/background"
+                    android:hint="@string/tie_address"
+                    android:textColorHint="?attr/colorOnSecondary"
+                    android:textSize="@dimen/large_text_size" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_data_of_birth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiet_data_of_birth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/background"
+                    android:hint="@string/tie_date_of_birth"
+                    android:textColorHint="?attr/colorOnSecondary"
+                    android:textSize="@dimen/large_text_size" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_save_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
+                android:backgroundTint="?attr/colorSecondary"
+                android:text="@string/save"
+                android:textColor="?attr/colorOnPrimary" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

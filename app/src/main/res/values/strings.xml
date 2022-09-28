@@ -4,4 +4,12 @@
     <string name="add_contact">Add contact</string>
     <string name="career">career</string>
     <string name="name">name</string>
+    <string name="user_photo">User photo</string>
+    <string name="tie_username">Username</string>
+    <string name="tie_email">Email</string>
+    <string name="tie_career">Career</string>
+    <string name="tie_phone">Phone</string>
+    <string name="tie_address">Address</string>
+    <string name="tie_date_of_birth">Date of birth</string>
+    <string name="save">save</string>
 </resources>
