@@ -1,27 +1,25 @@
 package ui
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.level2.R
 import com.example.level2.adapter.RecyclerAdapter
 import com.example.level2.databinding.MyContactsBinding
+import com.example.level2.model.User
 import com.example.level2.model.UsersViewModel
 import com.google.android.material.snackbar.Snackbar
 
-class MyContactsActivity : AppCompatActivity() {
+open class MyContactsActivity : AppCompatActivity() {
 
     private lateinit var adapter: RecyclerAdapter
     private lateinit var binding: MyContactsBinding
-    private var userList: UsersViewModel = UsersViewModel()
+    public var userList: UsersViewModel = UsersViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Binding
-        setContentView(R.layout.my_contacts)
         binding = MyContactsBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -30,8 +28,7 @@ class MyContactsActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = RecyclerAdapter(userList)
         //ItemTouch
-        var itemTouchHelper =
-            ItemTouchHelper(simpleCallback).attachToRecyclerView(recyclerView)
+        ItemTouchHelper(simpleCallback).attachToRecyclerView(recyclerView)
         //Listener
         setListeners()
     }
@@ -42,9 +39,18 @@ class MyContactsActivity : AppCompatActivity() {
 
     private fun setOnClickListeners() {
         binding.tvAddContact.setOnClickListener {
-            val intent = Intent(this, AddContactActivity::class.java)
-            startActivity(intent)
+            val myDialogFragment = DialogFragmentAddContact()
+            val manager = supportFragmentManager
+            myDialogFragment.apply { show(manager, "myDialog") }
         }
+    }
+
+    fun onContactSave(user: User) {
+        userList.add(userList.size(), user)
+        binding.rvContacts.adapter?.notifyItemRangeChanged(
+            0,
+            binding.rvContacts.adapter!!.itemCount
+        )
     }
 
     private var simpleCallback =
@@ -58,7 +64,6 @@ class MyContactsActivity : AppCompatActivity() {
             ): Boolean {
                 TODO("Not yet implemented")
             }
-
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 when (direction) {
                     ItemTouchHelper.LEFT -> {
@@ -74,7 +79,6 @@ class MyContactsActivity : AppCompatActivity() {
                             viewHolder.adapterPosition,
                             binding.rvContacts.adapter!!.itemCount
                         )
-
                     }
                 }
             }

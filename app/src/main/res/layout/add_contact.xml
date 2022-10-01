@@ -30,10 +30,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_back_arrow"
-            android:layout_marginTop="@dimen/margin_back_arrow"
             android:background="@drawable/back_arrow"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_add_contact"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/tv_add_contact" />
 
         <TextView
             android:id="@+id/tv_add_contact"
@@ -64,14 +64,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
+        android:id="@+id/sv_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_mid"
-        android:layout_marginTop="@dimen/margin_mid"
+        android:layout_marginTop="220dp"
         android:layout_marginEnd="@dimen/margin_mid"
         android:layout_marginBottom="@dimen/margin_mid"
-        android:isScrollContainer="false"
-        android:paddingTop="@dimen/padding_contacts">
+        android:isScrollContainer="false">
 
         <LinearLayout
             android:id="@+id/ll_contacts"
@@ -88,7 +88,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tie_username"
+                    android:id="@+id/tiet_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/background"

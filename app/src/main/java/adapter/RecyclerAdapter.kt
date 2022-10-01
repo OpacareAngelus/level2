@@ -14,8 +14,10 @@ import com.example.level2.model.UsersViewModel
 import com.google.android.material.snackbar.Snackbar
 
 
-open class RecyclerAdapter(userList: UsersViewModel) : RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>(),
+open class RecyclerAdapter(userList: UsersViewModel) :
+    RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>(),
     View.OnClickListener {
+
     var userList: UsersViewModel = userList
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -51,7 +53,7 @@ open class RecyclerAdapter(userList: UsersViewModel) : RecyclerView.Adapter<Recy
         }
     }
 
-     private fun deleteUser(user: User, v: View) {
+    private fun deleteUser(user: User, v: View) {
         val delMessage = Snackbar.make(v, "${user.name} has deleted.", Snackbar.LENGTH_LONG)
         userList.delete(user.id)
         notifyItemRemoved(user.id)
