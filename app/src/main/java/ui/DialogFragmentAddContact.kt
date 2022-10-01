@@ -30,7 +30,7 @@ class DialogFragmentAddContact : DialogFragment() {
     ): View {
         binding = AddContactBinding.inflate(inflater, container, false)
         //Open gallery
-        binding.ivUserPhoto.setOnClickListener() {
+        binding.ibAddPhoto.setOnClickListener() {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             activityResultLauncher.launch(intent)
         }

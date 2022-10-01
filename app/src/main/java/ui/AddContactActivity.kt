@@ -21,7 +21,6 @@ class AddContactActivity : AppCompatActivity() {
 
     private fun setOnClickListeners() {
         binding.btnSaveContact.setOnClickListener{
-
         }
     }
 }

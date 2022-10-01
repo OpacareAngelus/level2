@@ -19,4 +19,5 @@
     <dimen name="margin_mid">16dp</dimen>
     <dimen name="margin_large">24sp</dimen>
     <dimen name="padding_contacts">230dp</dimen>
+    <dimen name="grey_elipse">55dp</dimen>
 </resources>

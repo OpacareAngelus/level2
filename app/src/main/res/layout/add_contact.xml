@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/background"
     tools:context="ui.AddContactActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,12 +19,29 @@
             android:background="?attr/colorPrimary"
             app:layout_constraintBottom_toTopOf="@id/gl_under_v_top" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_under_v_top"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.30" />
+
+        <ImageView
+            android:id="@+id/iv_add_photo_background"
+            android:layout_width="@dimen/grey_elipse"
+            android:layout_height="@dimen/grey_elipse"
+            android:layout_marginStart="@dimen/margin_large"
+            android:background="?attr/colorOnSecondary"
+            android:foreground="@drawable/add_photo_btn_shaper"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_userPhoto"
+            app:layout_constraintStart_toEndOf="@+id/iv_userPhoto"
+            app:layout_constraintTop_toTopOf="@+id/iv_userPhoto" />
+
+        <ImageButton
+            android:id="@+id/ib_add_photo"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/no_color"
+            android:foreground="@drawable/camera"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_add_photo_background"
+            app:layout_constraintEnd_toEndOf="@+id/iv_add_photo_background"
+            app:layout_constraintStart_toEndOf="@+id/iv_userPhoto"
+            app:layout_constraintStart_toStartOf="@+id/iv_add_photo_background"
+            app:layout_constraintTop_toTopOf="@+id/iv_add_photo_background" />
 
         <ImageButton
             android:id="@+id/img_btn_back_arrow"
@@ -60,6 +78,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_add_contact" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_under_v_top"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.30" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
