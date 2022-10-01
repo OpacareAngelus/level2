@@ -2,7 +2,6 @@ package ui
 
 import android.app.Activity
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -45,18 +44,16 @@ class DialogFragmentAddContact : DialogFragment() {
             }
 
         binding.btnSaveContact.setOnClickListener() {
+            addUser()
             dismiss()
         }
-
+        binding.imgBtnBackArrow.setOnClickListener() {
+            dismiss()
+        }
         return binding.root
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        activityContext = context as MyContactsActivity
-    }
-
-    override fun onDismiss(dialog: DialogInterface) {
+    private fun addUser() {
         activityContext.onContactSave(
             User(
                 0,
@@ -69,6 +66,10 @@ class DialogFragmentAddContact : DialogFragment() {
                 binding.tietDataOfBirth.text.toString()
             )
         )
-        super.onDismiss(dialog)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        activityContext = context as MyContactsActivity
     }
 }
