@@ -17,10 +17,13 @@
     <dimen name="mid_text_size">14sp</dimen>
     <dimen name="large_text_size">18sp</dimen>
 
+    <dimen name="margin_extra_small">4dp</dimen>
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_mid">16dp</dimen>
     <dimen name="margin_large">24sp</dimen>
 
     <dimen name="grey_circle">55dp</dimen>
+    <dimen name="photo_size_in_recycle_view">50dp</dimen>
+
 
 </resources>
