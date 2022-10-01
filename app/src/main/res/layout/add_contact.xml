@@ -70,7 +70,7 @@
             android:id="@+id/iv_userPhoto"
             android:layout_width="@dimen/user_photo_size"
             android:layout_height="@dimen/user_photo_size"
-            android:scaleType="centerInside"
+            android:scaleType="centerCrop"
             android:backgroundTint="@drawable/btn_rect"
             android:contentDescription="@string/user_photo"
             android:foreground="@drawable/img_shaper_color_prime"

@@ -16,7 +16,7 @@
         android:layout_marginTop="@dimen/margin_extra_small"
         android:layout_marginBottom="@dimen/margin_extra_small"
         android:foreground="@drawable/img_shaper_color_background"
-        android:scaleType="centerInside"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
