@@ -1,6 +1,7 @@
 package ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -64,23 +65,37 @@ open class MyContactsActivity : AppCompatActivity() {
             ): Boolean {
                 TODO("Not yet implemented")
             }
+
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 when (direction) {
                     ItemTouchHelper.LEFT -> {
-                        Snackbar.make(
+                        val user = userList.getUser(viewHolder.adapterPosition)
+                        val delMessage = Snackbar.make(
                             viewHolder.itemView,
-                            "${userList.getUser(viewHolder.adapterPosition).name} has deleted.",
+                            "${user.name} has deleted.",
                             Snackbar.LENGTH_LONG
                         )
-                            .show()
                         userList.delete(viewHolder.adapterPosition)
                         binding.rvContacts.adapter?.notifyItemRemoved(viewHolder.adapterPosition)
                         binding.rvContacts.adapter?.notifyItemRangeChanged(
                             viewHolder.adapterPosition,
                             binding.rvContacts.adapter!!.itemCount
                         )
+                        backUser(user, delMessage, viewHolder.adapterPosition)
+                        delMessage.show()
                     }
                 }
             }
         }
+    
+    /**Method back to list of contacts deleted contact if user push "Cancel" on the Snackbar.*/
+    private fun backUser(user: User, delMessage: Snackbar, position: Int) {
+        delMessage.setAction("Cancel", View.OnClickListener() {
+            userList.add(user.id, user)
+            binding.rvContacts.adapter?.notifyItemRangeChanged(
+                position,
+                binding.rvContacts.adapter!!.itemCount
+            )
+        })
+    }
 }
