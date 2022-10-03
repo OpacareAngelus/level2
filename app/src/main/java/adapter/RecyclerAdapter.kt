@@ -1,4 +1,4 @@
-package com.example.level2.adapter
+package adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.level2.R
-import com.example.level2.extension.addImage
-import com.example.level2.model.User
-import com.example.level2.model.UsersViewModel
 import com.google.android.material.snackbar.Snackbar
+import extension.addImage
+import model.User
+import model.UsersViewModel
 
 
 open class RecyclerAdapter(userList: UsersViewModel) :

@@ -1,8 +1,8 @@
-package com.example.level2.extension
+package extension
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.example.level2.model.User
+import model.User
 
 fun ImageView.addImage(user: User) {
     Glide.with(this.context)

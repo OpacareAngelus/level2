@@ -1,16 +1,16 @@
 package ui
 
+import adapter.RecyclerAdapter
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.level2.adapter.RecyclerAdapter
 import com.example.level2.databinding.MyContactsBinding
-import com.example.level2.model.User
-import com.example.level2.model.UsersViewModel
 import com.google.android.material.snackbar.Snackbar
+import model.User
+import model.UsersViewModel
 
 open class MyContactsActivity : AppCompatActivity() {
 

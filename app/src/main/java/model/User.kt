@@ -1,4 +1,4 @@
-package com.example.level2.model
+package model
 
 data class User(
     var id: Int,

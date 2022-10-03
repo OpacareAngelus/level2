@@ -1,4 +1,6 @@
-package com.example.level2.model
+package data
+
+import model.User
 
 object UserData {
 

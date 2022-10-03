@@ -1,6 +1,7 @@
-package com.example.level2.model
+package model
 
 import androidx.lifecycle.ViewModel
+import data.UserData
 
 class UsersViewModel : ViewModel() {
 
