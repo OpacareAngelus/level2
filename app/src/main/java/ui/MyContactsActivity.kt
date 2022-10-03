@@ -16,7 +16,7 @@ open class MyContactsActivity : AppCompatActivity() {
 
     private lateinit var adapter: RecyclerAdapter
     private lateinit var binding: MyContactsBinding
-    public var userList: UsersViewModel = UsersViewModel()
+    var userList: UsersViewModel = UsersViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,7 +87,7 @@ open class MyContactsActivity : AppCompatActivity() {
                 }
             }
         }
-    
+
     /**Method back to list of contacts deleted contact if user push "Cancel" on the Snackbar.*/
     private fun backUser(user: User, delMessage: Snackbar, position: Int) {
         delMessage.setAction("Cancel", View.OnClickListener() {
