@@ -18,7 +18,7 @@ open class RecyclerAdapter(userList: UsersViewModel) :
     RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>(),
     View.OnClickListener {
 
-    var userList: UsersViewModel = userList
+    var userList = userList
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameField: TextView = itemView.findViewById(R.id.tv_name)
