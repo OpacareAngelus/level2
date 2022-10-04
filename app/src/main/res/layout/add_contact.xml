@@ -19,7 +19,6 @@
             android:background="?attr/colorPrimary"
             app:layout_constraintBottom_toTopOf="@id/gl_under_v_top" />
 
-
         <ImageView
             android:id="@+id/iv_add_photo_background"
             android:layout_width="@dimen/grey_circle"
