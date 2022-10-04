@@ -29,7 +29,7 @@ class DialogFragmentAddContact : DialogFragment() {
     ): View {
         binding = AddContactBinding.inflate(inflater, container, false)
         //Open gallery
-        binding.ibAddPhoto.setOnClickListener() {
+        binding.ivAddPhotoBackground.setOnClickListener() {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             activityResultLauncher.launch(intent)
         }

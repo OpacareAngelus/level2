@@ -26,22 +26,10 @@
             android:layout_height="@dimen/grey_circle"
             android:layout_marginStart="@dimen/margin_large"
             android:background="?attr/colorOnSecondary"
-            android:foreground="@drawable/add_photo_btn_shaper"
+            android:foreground="@drawable/camera_centred"
             app:layout_constraintBottom_toBottomOf="@+id/iv_userPhoto"
             app:layout_constraintStart_toEndOf="@+id/iv_userPhoto"
             app:layout_constraintTop_toTopOf="@+id/iv_userPhoto" />
-
-        <ImageButton
-            android:id="@+id/ib_add_photo"
-            android:layout_width="@dimen/grey_circle"
-            android:layout_height="@dimen/grey_circle"
-            android:backgroundTint="@color/no_color"
-            android:foreground="@drawable/camera_centred"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_add_photo_background"
-            app:layout_constraintEnd_toEndOf="@+id/iv_add_photo_background"
-            app:layout_constraintStart_toEndOf="@+id/iv_userPhoto"
-            app:layout_constraintStart_toStartOf="@+id/iv_add_photo_background"
-            app:layout_constraintTop_toTopOf="@+id/iv_add_photo_background" />
 
         <ImageButton
             android:id="@+id/img_btn_back_arrow"
@@ -52,6 +40,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_add_contact"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_add_contact" />
+
 
         <TextView
             android:id="@+id/tv_add_contact"
@@ -70,10 +59,10 @@
             android:id="@+id/iv_userPhoto"
             android:layout_width="@dimen/user_photo_size"
             android:layout_height="@dimen/user_photo_size"
-            android:scaleType="centerCrop"
             android:backgroundTint="@drawable/btn_rect"
             android:contentDescription="@string/user_photo"
             android:foreground="@drawable/img_shaper_color_prime"
+            android:scaleType="centerCrop"
             android:src="@drawable/dummy_user_photo"
             app:layout_constraintBottom_toBottomOf="@+id/v_top"
             app:layout_constraintEnd_toEndOf="parent"
@@ -91,8 +80,8 @@
             android:id="@+id/sv_main"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/margin_small"
             android:layout_marginVertical="@dimen/margin_large"
+            android:layout_marginBottom="@dimen/margin_small"
             android:isScrollContainer="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
