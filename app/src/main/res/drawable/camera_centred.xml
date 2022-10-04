@@ -2,7 +2,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <size android:height="35dp" android:width="35dp"/>
             <solid android:color="@color/no_color"/>
         </shape>
     </item>
