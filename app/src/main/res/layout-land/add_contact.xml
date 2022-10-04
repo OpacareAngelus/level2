@@ -33,10 +33,10 @@
 
         <ImageButton
             android:id="@+id/ib_add_photo"
-            android:layout_width="@dimen/ib_camera_size"
-            android:layout_height="@dimen/ib_camera_size"
+            android:layout_width="@dimen/grey_circle"
+            android:layout_height="@dimen/grey_circle"
             android:backgroundTint="@color/no_color"
-            android:foreground="@drawable/camera"
+            android:foreground="@drawable/camera_centred"
             app:layout_constraintBottom_toBottomOf="@+id/iv_add_photo_background"
             app:layout_constraintEnd_toEndOf="@+id/iv_add_photo_background"
             app:layout_constraintStart_toEndOf="@+id/iv_userPhoto"

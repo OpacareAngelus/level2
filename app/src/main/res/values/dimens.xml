@@ -24,6 +24,7 @@
 
     <dimen name="grey_circle">55dp</dimen>
     <dimen name="photo_size_in_recycle_view">50dp</dimen>
+    <dimen name="camera_centred">12dp</dimen>
 
 
 </resources>
