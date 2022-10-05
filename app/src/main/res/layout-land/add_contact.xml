@@ -21,7 +21,7 @@
 
 
         <ImageView
-            android:id="@+id/iv_add_photo_background"
+            android:id="@+id/iv_add_photo"
             android:layout_width="@dimen/grey_circle"
             android:layout_height="@dimen/grey_circle"
             android:layout_marginStart="@dimen/margin_large"
