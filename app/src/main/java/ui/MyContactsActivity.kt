@@ -25,7 +25,7 @@ class MyContactsActivity : AppCompatActivity() {
 
         val recyclerView: RecyclerView = binding.rvContacts
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = RecyclerAdapter(userList)
+        recyclerView.adapter = RecyclerAdapter(userList, )
 
         ItemTouchHelper(simpleCallback).attachToRecyclerView(recyclerView)
 
