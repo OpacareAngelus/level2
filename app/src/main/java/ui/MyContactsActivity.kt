@@ -11,7 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import model.User
 import model.UsersViewModel
 
-open class MyContactsActivity : AppCompatActivity() {
+class MyContactsActivity : AppCompatActivity() {
 
     private lateinit var binding: MyContactsBinding
     var userList: UsersViewModel = UsersViewModel()
