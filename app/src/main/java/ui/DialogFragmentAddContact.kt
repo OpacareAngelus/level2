@@ -28,12 +28,12 @@ class DialogFragmentAddContact : DialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = AddContactBinding.inflate(inflater, container, false)
-        //Open gallery
-        binding.ivAddPhotoBackground.setOnClickListener() {
+
+        binding.ivAddPhoto.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             activityResultLauncher.launch(intent)
         }
-        //Add user photo
+
         activityResultLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == Activity.RESULT_OK) {

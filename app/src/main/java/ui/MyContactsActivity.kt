@@ -2,7 +2,6 @@ package ui
 
 import adapter.RecyclerAdapter
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,27 +13,22 @@ import model.UsersViewModel
 
 open class MyContactsActivity : AppCompatActivity() {
 
-    private lateinit var adapter: RecyclerAdapter
     private lateinit var binding: MyContactsBinding
     var userList: UsersViewModel = UsersViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //Binding
+
         binding = MyContactsBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        //Create RecyclerView
+
+        setContentView(binding.root)
+
         val recyclerView: RecyclerView = binding.rvContacts
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = RecyclerAdapter(userList)
-        //ItemTouch
-        ItemTouchHelper(simpleCallback).attachToRecyclerView(recyclerView)
-        //Listener
-        setListeners()
-    }
 
-    private fun setListeners() {
+        ItemTouchHelper(simpleCallback).attachToRecyclerView(recyclerView)
+
         setOnClickListeners()
     }
 
@@ -47,7 +41,7 @@ open class MyContactsActivity : AppCompatActivity() {
     }
 
     fun onContactSave(user: User) {
-        userList.add(userList.size(), user)
+        userList.add(user)
         binding.rvContacts.adapter?.notifyItemRangeChanged(
             0,
             binding.rvContacts.adapter!!.itemCount
@@ -72,7 +66,7 @@ open class MyContactsActivity : AppCompatActivity() {
                         val user = userList.getUser(viewHolder.adapterPosition)
                         val delMessage = Snackbar.make(
                             viewHolder.itemView,
-                            "${user.name} has deleted.",
+                            "${user?.name} has deleted.",
                             Snackbar.LENGTH_LONG
                         )
                         userList.delete(viewHolder.adapterPosition)
@@ -81,7 +75,7 @@ open class MyContactsActivity : AppCompatActivity() {
                             viewHolder.adapterPosition,
                             binding.rvContacts.adapter!!.itemCount
                         )
-                        backUser(user, delMessage, viewHolder.adapterPosition)
+                        undoUserDeletion(user, delMessage, viewHolder.adapterPosition)
                         delMessage.show()
                     }
                 }
@@ -89,13 +83,13 @@ open class MyContactsActivity : AppCompatActivity() {
         }
 
     /**Method back to list of contacts deleted contact if user push "Cancel" on the Snackbar.*/
-    private fun backUser(user: User, delMessage: Snackbar, position: Int) {
-        delMessage.setAction("Cancel", View.OnClickListener() {
-            userList.add(user.id, user)
+    private fun undoUserDeletion(user: User?, delMessage: Snackbar, position: Int) {
+        delMessage.setAction("Cancel") {
+            userList.add(user)
             binding.rvContacts.adapter?.notifyItemRangeChanged(
                 position,
                 binding.rvContacts.adapter!!.itemCount
             )
-        })
+        }
     }
 }
