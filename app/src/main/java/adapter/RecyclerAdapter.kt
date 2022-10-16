@@ -16,7 +16,7 @@ import model.User
 import model.UsersViewModel
 
 
-open class RecyclerAdapter(
+class RecyclerAdapter(
     private val userList: UsersViewModel,
 //    private val onDeleteUser: (User) -> Unit
 ) :
