@@ -1,7 +1,6 @@
 package ui
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -17,8 +16,11 @@ import model.User
 
 class DialogFragmentAddContact : DialogFragment() {
 
+    companion object {
+        const val TAG = "myDialog"
+    }
+
     private lateinit var binding: AddContactBinding;
-    private lateinit var activityContext: MyContactsActivity
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private var contactPhoto: Uri? = null
 
@@ -28,7 +30,11 @@ class DialogFragmentAddContact : DialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = AddContactBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.ivAddPhoto.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             activityResultLauncher.launch(intent)
@@ -43,18 +49,18 @@ class DialogFragmentAddContact : DialogFragment() {
                 }
             }
 
-        binding.btnSaveContact.setOnClickListener() {
+        binding.btnSaveContact.setOnClickListener {
             addUser()
             dismiss()
         }
-        binding.imgBtnBackArrow.setOnClickListener() {
+
+        binding.imgBtnBackArrow.setOnClickListener {
             dismiss()
         }
-        return binding.root
     }
 
     private fun addUser() {
-        activityContext.onContactSave(
+        (activity as MyContactsActivity).onContactSave(
             User(
                 0,
                 contactPhoto.toString(),
@@ -66,10 +72,5 @@ class DialogFragmentAddContact : DialogFragment() {
                 binding.tietDataOfBirth.text.toString()
             )
         )
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        activityContext = context as MyContactsActivity
     }
 }
