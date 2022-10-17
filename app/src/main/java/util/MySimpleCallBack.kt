@@ -31,7 +31,7 @@ class MySimpleCallBack(var viewModel: UsersViewModel, var userAdapter: RecyclerA
                             "${user?.name} has deleted.",
                             Snackbar.LENGTH_LONG
                         )
-                        viewModel.userListLiveData.value?.removeAt(viewHolder.adapterPosition)
+                        viewModel.deleteUser(viewHolder.adapterPosition)
                         userAdapter.notifyItemRemoved(viewHolder.adapterPosition)
                         userAdapter.notifyItemRangeChanged(
                             viewHolder.adapterPosition,
