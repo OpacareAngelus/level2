@@ -15,7 +15,8 @@ import model.UsersViewModel
 
 
 class RecyclerAdapter(
-    private val userList: UsersViewModel
+    private val userList: UsersViewModel,
+    private val onDeleteUser: (User) -> Unit
 ) :
     ListAdapter<User, RecyclerAdapter.MyViewHolder>(object : DiffUtil.ItemCallback<User>() {
 
@@ -30,7 +31,7 @@ class RecyclerAdapter(
     View.OnClickListener {
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        lateinit var binding : RecyclerviewItemBinding
+        lateinit var binding: RecyclerviewItemBinding
 
         fun bind() {
             binding = RecyclerviewItemBinding.bind(itemView)
@@ -41,8 +42,7 @@ class RecyclerAdapter(
             userList.getUser(adapterPosition)?.id = adapterPosition
 
             binding.imgBtnTrashCan.setOnClickListener {
-                val user = it?.tag as User
-                deleteUser(user, itemView)
+                deleteUser(it?.tag as User, itemView)
             }
         }
     }
@@ -64,7 +64,7 @@ class RecyclerAdapter(
 
     private fun deleteUser(user: User, view: View) {
         val delMessage = Snackbar.make(view, "${user.name} has deleted.", Snackbar.LENGTH_LONG)
-        userList.delete(user.id)
+        onDeleteUser(user)
         notifyItemRemoved(user.id)
         userList.size()?.let { notifyItemRangeChanged(user.id, it) }
         undoUserDeletion(user, delMessage)
