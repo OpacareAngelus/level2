@@ -19,7 +19,7 @@ class MyContactsActivity : AppCompatActivity() {
         RecyclerAdapter(
             viewmodel,
             onDeleteUser = { user ->
-                viewmodel.deleteUser(user)
+                viewmodel.userListLiveData.value?.remove(user)
             }
         )
     }
@@ -28,12 +28,18 @@ class MyContactsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = MyContactsBinding.inflate(layoutInflater)
+        setObservers()
         setContentView(binding.root)
 
         val recyclerView: RecyclerView = binding.rvContacts
         recyclerView.adapter = usersAdapter
 
-        ItemTouchHelper(MySimpleCallBack(viewmodel, usersAdapter).simpleCallback).attachToRecyclerView(recyclerView)
+        ItemTouchHelper(
+            MySimpleCallBack(
+                viewmodel,
+                usersAdapter
+            ).simpleCallback
+        ).attachToRecyclerView(recyclerView)
 
         binding.tvAddContact.setOnClickListener {
             DialogFragmentAddContact().apply {
@@ -43,18 +49,17 @@ class MyContactsActivity : AppCompatActivity() {
                 )
             }
         }
-
-        setObservers()
     }
 
     override fun onPause() {
         super.onPause()
         println("Show me usersAdapter.currentList onPause this activity: ${usersAdapter.currentList}")
     }
+
     private fun setObservers() {
         viewmodel.userListLiveData.observe(this) {
             println("Show me usersAdapter.currentList before submitList ${usersAdapter.currentList}")
-            usersAdapter.submitList(viewmodel.userListLiveData.value?.toMutableList())
+            usersAdapter.submitList(viewmodel.userListLiveData.value)
             println("Show me usersAdapter.currentList after submitList ${usersAdapter.currentList}")
         }
     }
