@@ -19,7 +19,7 @@ class MyContactsActivity : AppCompatActivity() {
         RecyclerAdapter(
             viewmodel,
             onDeleteUser = { user ->
-                viewmodel.deleteUser(user)
+                viewmodel.userListLiveData.value?.remove(user)
             }
         )
     }
@@ -30,17 +30,11 @@ class MyContactsActivity : AppCompatActivity() {
         binding = MyContactsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setObservers()
-        setOnClickListeners()
-
         val recyclerView: RecyclerView = binding.rvContacts
         recyclerView.adapter = usersAdapter
 
         ItemTouchHelper(simpleCallback).attachToRecyclerView(recyclerView)
 
-    }
-
-    private fun setOnClickListeners() {
         binding.tvAddContact.setOnClickListener {
             DialogFragmentAddContact().apply {
                 show(
@@ -49,6 +43,8 @@ class MyContactsActivity : AppCompatActivity() {
                 )
             }
         }
+
+        setObservers()
     }
 
     private fun setObservers() {
@@ -58,7 +54,7 @@ class MyContactsActivity : AppCompatActivity() {
     }
 
     fun onContactSave(user: User) {
-        viewmodel.add(user)
+        viewmodel.userListLiveData.value?.add(user)
         usersAdapter.notifyItemRangeChanged(0, usersAdapter.itemCount)
     }
 
@@ -83,7 +79,7 @@ class MyContactsActivity : AppCompatActivity() {
                             "${user?.name} has deleted.",
                             Snackbar.LENGTH_LONG
                         )
-                        viewmodel.deleteUser(viewHolder.adapterPosition)
+                        viewmodel.userListLiveData.value?.removeAt(viewHolder.adapterPosition)
                         usersAdapter.notifyItemRemoved(viewHolder.adapterPosition)
                         usersAdapter.notifyItemRangeChanged(
                             viewHolder.adapterPosition,
@@ -99,7 +95,7 @@ class MyContactsActivity : AppCompatActivity() {
     /**Method back to list of contacts deleted contact if user push "Cancel" on the Snackbar.*/
     private fun undoUserDeletion(user: User?, delMessage: Snackbar, position: Int) {
         delMessage.setAction("Cancel") {
-            viewmodel.add(user)
+            user?.let { it1 -> viewmodel.userListLiveData.value?.add(it1) }
             usersAdapter.notifyItemRangeChanged(
                 position,
                 usersAdapter.itemCount
