@@ -4,7 +4,6 @@ import adapter.RecyclerAdapter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.level2.databinding.MyContactsBinding
 import com.google.android.material.snackbar.Snackbar
@@ -14,38 +13,53 @@ import model.UsersViewModel
 class MyContactsActivity : AppCompatActivity() {
 
     private lateinit var binding: MyContactsBinding
-    var userList: UsersViewModel = UsersViewModel()
+    var viewmodel: UsersViewModel = UsersViewModel()
+
+    private val usersAdapter by lazy {
+        RecyclerAdapter(
+            viewmodel,
+            onDeleteUser = { user ->
+                viewmodel.deleteUser(user)
+            }
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = MyContactsBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
 
+        setObservers()
+        setOnClickListeners()
+
         val recyclerView: RecyclerView = binding.rvContacts
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = RecyclerAdapter(userList, )
+        recyclerView.adapter = usersAdapter
 
         ItemTouchHelper(simpleCallback).attachToRecyclerView(recyclerView)
 
-        setOnClickListeners()
     }
 
     private fun setOnClickListeners() {
         binding.tvAddContact.setOnClickListener {
-            val myDialogFragment = DialogFragmentAddContact()
-            val manager = supportFragmentManager
-            myDialogFragment.apply { show(manager, "myDialog") }
+            DialogFragmentAddContact().apply {
+                show(
+                    supportFragmentManager,
+                    DialogFragmentAddContact.TAG
+                )
+            }
+        }
+    }
+
+    private fun setObservers() {
+        viewmodel.userListLiveData.observe(this) { users ->
+            usersAdapter.submitList(users.toMutableList())
         }
     }
 
     fun onContactSave(user: User) {
-        userList.add(user)
-        binding.rvContacts.adapter?.notifyItemRangeChanged(
-            0,
-            binding.rvContacts.adapter!!.itemCount
-        )
+        viewmodel.add(user)
+        usersAdapter.notifyItemRangeChanged(0, usersAdapter.itemCount)
     }
 
     private var simpleCallback =
@@ -63,17 +77,17 @@ class MyContactsActivity : AppCompatActivity() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 when (direction) {
                     ItemTouchHelper.LEFT -> {
-                        val user = userList.getUser(viewHolder.adapterPosition)
+                        val user = viewmodel.getUser(viewHolder.adapterPosition)
                         val delMessage = Snackbar.make(
                             viewHolder.itemView,
                             "${user?.name} has deleted.",
                             Snackbar.LENGTH_LONG
                         )
-                        userList.delete(viewHolder.adapterPosition)
-                        binding.rvContacts.adapter?.notifyItemRemoved(viewHolder.adapterPosition)
-                        binding.rvContacts.adapter?.notifyItemRangeChanged(
+                        viewmodel.deleteUser(viewHolder.adapterPosition)
+                        usersAdapter.notifyItemRemoved(viewHolder.adapterPosition)
+                        usersAdapter.notifyItemRangeChanged(
                             viewHolder.adapterPosition,
-                            binding.rvContacts.adapter!!.itemCount
+                            usersAdapter.itemCount
                         )
                         undoUserDeletion(user, delMessage, viewHolder.adapterPosition)
                         delMessage.show()
@@ -85,10 +99,10 @@ class MyContactsActivity : AppCompatActivity() {
     /**Method back to list of contacts deleted contact if user push "Cancel" on the Snackbar.*/
     private fun undoUserDeletion(user: User?, delMessage: Snackbar, position: Int) {
         delMessage.setAction("Cancel") {
-            userList.add(user)
-            binding.rvContacts.adapter?.notifyItemRangeChanged(
+            viewmodel.add(user)
+            usersAdapter.notifyItemRangeChanged(
                 position,
-                binding.rvContacts.adapter!!.itemCount
+                usersAdapter.itemCount
             )
         }
     }
