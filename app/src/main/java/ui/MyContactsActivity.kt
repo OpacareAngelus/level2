@@ -19,7 +19,7 @@ class MyContactsActivity : AppCompatActivity() {
         RecyclerAdapter(
             viewmodel,
             onDeleteUser = { user ->
-                viewmodel.userListLiveData.value?.remove(user)
+                viewmodel.deleteUser(user)
             }
         )
     }
@@ -47,9 +47,15 @@ class MyContactsActivity : AppCompatActivity() {
         setObservers()
     }
 
+    override fun onPause() {
+        super.onPause()
+        println("Show me usersAdapter.currentList onPause this activity: ${usersAdapter.currentList}")
+    }
     private fun setObservers() {
-        viewmodel.userListLiveData.observe(this) { users ->
-            usersAdapter.submitList(users.toMutableList())
+        viewmodel.userListLiveData.observe(this) {
+            println("Show me usersAdapter.currentList before submitList ${usersAdapter.currentList}")
+            usersAdapter.submitList(viewmodel.userListLiveData.value?.toMutableList())
+            println("Show me usersAdapter.currentList after submitList ${usersAdapter.currentList}")
         }
     }
 
