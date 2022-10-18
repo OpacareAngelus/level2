@@ -2,6 +2,7 @@ package ui
 
 import adapter.RecyclerAdapter
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +14,7 @@ import util.MySimpleCallBack
 class MyContactsActivity : AppCompatActivity() {
 
     private lateinit var binding: MyContactsBinding
-    var viewmodel: UsersViewModel = UsersViewModel()
+    private val viewmodel: UsersViewModel by viewModels()
 
     private val usersAdapter by lazy {
         RecyclerAdapter(
