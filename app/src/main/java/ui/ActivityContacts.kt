@@ -7,14 +7,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.level2.databinding.MyContactsBinding
+import com.example.level2.databinding.ActivityContactsBinding
 import model.User
 import model.UsersViewModel
 import util.SimpleCallBack
 
-class MyContactsActivity : AppCompatActivity(), UserListController {
+class ActivityContacts : AppCompatActivity(), UserListController {
 
-    private lateinit var binding: MyContactsBinding
+    private lateinit var binding: ActivityContactsBinding
     private val viewModel: UsersViewModel by viewModels()
 
     private val usersAdapter by lazy {
@@ -24,7 +24,7 @@ class MyContactsActivity : AppCompatActivity(), UserListController {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = MyContactsBinding.inflate(layoutInflater)
+        binding = ActivityContactsBinding.inflate(layoutInflater)
         setObservers()
         setContentView(binding.root)
 

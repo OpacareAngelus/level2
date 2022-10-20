@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ui.MyContactsActivity">
+    tools:context="ui.ActivityContacts">
 
     <View
         android:id="@+id/v_top"
@@ -66,13 +66,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/rv_contacts_margin"
         android:layout_marginEnd="@dimen/rv_contacts_margin"
-        android:paddingBottom="@dimen/recycler_view_bottom_padding"
         android:orientation="vertical"
+        android:paddingBottom="@dimen/recycler_view_bottom_padding"
         android:scrollbars="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/gl_under_v_top"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/recyclerview_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
