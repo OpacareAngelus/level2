@@ -1,6 +1,7 @@
 package ui
 
 import adapter.RecyclerAdapterUserContacts
+import adapter.UserListController
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -9,20 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.level2.databinding.MyContactsBinding
 import model.User
 import model.UsersViewModel
-import util.MySimpleCallBack
+import util.SimpleCallBack
 
-class MyContactsActivity : AppCompatActivity() {
+class MyContactsActivity : AppCompatActivity(), UserListController {
 
     private lateinit var binding: MyContactsBinding
-    private val viewmodel: UsersViewModel by viewModels()
+    private val viewModel: UsersViewModel by viewModels()
 
     private val usersAdapter by lazy {
-        RecyclerAdapterUserContacts(
-            viewmodel,
-            onDeleteUser = { user ->
-                viewmodel.userListLiveData.value?.remove(user)
-            }
-        )
+        RecyclerAdapterUserContacts(userListController = this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,12 +28,11 @@ class MyContactsActivity : AppCompatActivity() {
         setObservers()
         setContentView(binding.root)
 
-        val recyclerView: RecyclerView = binding.rvContacts
-        recyclerView.adapter = usersAdapter
+        val recyclerView: RecyclerView = binding.rvContacts.apply { adapter = usersAdapter }
 
         ItemTouchHelper(
-            MySimpleCallBack(
-                viewmodel,
+            SimpleCallBack(
+                viewModel,
                 usersAdapter
             ).simpleCallback
         ).attachToRecyclerView(recyclerView)
@@ -52,21 +47,23 @@ class MyContactsActivity : AppCompatActivity() {
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-        println("Show me usersAdapter.currentList onPause this activity: ${usersAdapter.currentList}")
-    }
-
     private fun setObservers() {
-        viewmodel.userListLiveData.observe(this) {
-            println("Show me usersAdapter.currentList before submitList ${usersAdapter.currentList}")
-            usersAdapter.submitList(viewmodel.userListLiveData.value)
-            println("Show me usersAdapter.currentList after submitList ${usersAdapter.currentList}")
+        viewModel.userListLiveData.observe(this) {
+            usersAdapter.submitList(viewModel.userListLiveData.value?.toMutableList())
         }
     }
 
-    fun onContactSave(user: User) {
-        viewmodel.userListLiveData.value?.add(user)
-        usersAdapter.notifyItemRangeChanged(0, usersAdapter.itemCount)
+    override fun onContactAdd(user: User) {
+        usersAdapter.submitList(viewModel.userListLiveData.value.also {
+            viewModel.userListLiveData.value?.add(user)
+        }?.toMutableList())
+    }
+
+    override fun onDeleteUser(user: User) {
+        usersAdapter.submitList(viewModel.userListLiveData.value.also {
+            viewModel.userListLiveData.value?.remove(
+                user
+            )
+        }?.toMutableList())
     }
 }
