@@ -13,4 +13,6 @@
     <string name="tie_address">Адреса</string>
     <string name="tie_date_of_birth">Дата народження</string>
     <string name="save">зберігти</string>
+    <string name="cancel">Відмінити</string>
+    <string name="deletedUser">"${user.name} видалено."</string>
 </resources>
