@@ -20,7 +20,7 @@ class DialogFragmentAddContact : DialogFragment() {
         const val TAG = "myDialog"
     }
 
-    private lateinit var binding: AddContactBinding;
+    private lateinit var binding: AddContactBinding
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private var contactPhoto: Uri? = null
 
@@ -60,7 +60,7 @@ class DialogFragmentAddContact : DialogFragment() {
     }
 
     private fun addUser() {
-        (activity as MyContactsActivity).onContactAdd(
+        (activity as ActivityContacts).onContactAdd(
             User(
                 0,
                 contactPhoto.toString(),
