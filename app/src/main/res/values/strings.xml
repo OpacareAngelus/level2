@@ -12,4 +12,6 @@
     <string name="tie_address">Address</string>
     <string name="tie_date_of_birth">Date of birth</string>
     <string name="save">save</string>
+    <string name="cancel">Cancel</string>
+    <string name="deletedUser">"${user?.name} has deleted."</string>
 </resources>
