@@ -21,7 +21,7 @@
             android:name="ui.AddContactActivity"
             android:exported="false" />
         <activity
-            android:name="ui.MyContactsActivity"
+            android:name="ui.ActivityContacts"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
