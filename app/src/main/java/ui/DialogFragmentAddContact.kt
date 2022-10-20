@@ -60,7 +60,7 @@ class DialogFragmentAddContact : DialogFragment() {
     }
 
     private fun addUser() {
-        (activity as MyContactsActivity).onContactSave(
+        (activity as MyContactsActivity).onContactAdd(
             User(
                 0,
                 contactPhoto.toString(),
