@@ -1,6 +1,6 @@
 package util
 
-import adapter.RecyclerAdapter
+import adapter.RecyclerAdapterUserContacts
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
@@ -8,7 +8,7 @@ import model.User
 import model.UsersViewModel
 
 /**This is my callBack for ItemTouchHelper*/
-class MySimpleCallBack(var viewModel: UsersViewModel, var userAdapter: RecyclerAdapter) {
+class MySimpleCallBack(var viewModel: UsersViewModel, var userAdapter: RecyclerAdapterUserContacts) {
 
     var simpleCallback =
         object : ItemTouchHelper.SimpleCallback(

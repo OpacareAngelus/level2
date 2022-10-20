@@ -1,6 +1,6 @@
 package ui
 
-import adapter.RecyclerAdapter
+import adapter.RecyclerAdapterUserContacts
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +17,7 @@ class MyContactsActivity : AppCompatActivity() {
     private val viewmodel: UsersViewModel by viewModels()
 
     private val usersAdapter by lazy {
-        RecyclerAdapter(
+        RecyclerAdapterUserContacts(
             viewmodel,
             onDeleteUser = { user ->
                 viewmodel.userListLiveData.value?.remove(user)
