@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.level2.R
-import com.example.level2.databinding.RecyclerviewItemBinding
+import com.example.level2.databinding.RecyclerviewContactsItemBinding
 import com.google.android.material.snackbar.Snackbar
 import extension.addImage
 import model.User
@@ -22,7 +22,7 @@ class RecyclerAdapterUserContacts(private val userListController: UserListContro
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recyclerview_item, parent, false)
+            .inflate(R.layout.recyclerview_contacts_item, parent, false)
         return ViewHolder(itemView)
     }
 
@@ -46,7 +46,7 @@ class RecyclerAdapterUserContacts(private val userListController: UserListContro
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind() {
-            RecyclerviewItemBinding.bind(itemView).run {
+            RecyclerviewContactsItemBinding.bind(itemView).run {
                 tvName.text = currentList[absoluteAdapterPosition]?.name
                 tvCareer.text = currentList[absoluteAdapterPosition]?.career
                 currentList[absoluteAdapterPosition]?.let { ivUserPhoto.addImage(it) }
