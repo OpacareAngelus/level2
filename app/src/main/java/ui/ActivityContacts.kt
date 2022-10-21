@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.level2.databinding.ActivityContactsBinding
 import model.User
@@ -29,6 +30,7 @@ class ActivityContacts : AppCompatActivity(), UserListController {
         setContentView(binding.root)
 
         val recyclerView: RecyclerView = binding.rvContacts.apply { adapter = usersAdapter }
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         ItemTouchHelper(
             SimpleCallBack(
