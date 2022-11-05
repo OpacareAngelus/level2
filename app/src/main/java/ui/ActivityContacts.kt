@@ -26,7 +26,6 @@ class ActivityContacts : AppCompatActivity(), UserListController {
         super.onCreate(savedInstanceState)
 
         binding = ActivityContactsBinding.inflate(layoutInflater)
-        setObservers()
         setContentView(binding.root)
 
         val recyclerView: RecyclerView = binding.rvContacts.apply { adapter = usersAdapter }
@@ -47,6 +46,8 @@ class ActivityContacts : AppCompatActivity(), UserListController {
                 )
             }
         }
+
+        setObservers()
     }
 
     private fun setObservers() {
